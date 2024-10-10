@@ -1,0 +1,12 @@
+specVersion: "v1beta"
+serviceId: "nanny-react-ts-sass"
+location: "us-central1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "fdcdb"
+      cloudSql:
+        instanceId: "nanny-react-ts-sass-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]
