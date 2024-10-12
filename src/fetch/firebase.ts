@@ -1,11 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { QuerySnapshot } from "firebase/firestore";
 import { firebaseConfig } from "./keys";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { NannyResponse } from "../redux/operatioms";
 
-// Your web app's Firebase configuration
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
@@ -62,9 +61,14 @@ const db = getFirestore(app);
 export const getDataFromCollection = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, "nannys"));
-    querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
-    });
+    const processNannyDocs = (querySnapshot: QuerySnapshot): NannyResponse[] => {
+      return querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+      })) as NannyResponse[];
+  };
+    const nannies = processNannyDocs(querySnapshot);
+    return nannies
   } catch (error) {
     console.error('Error fetching data from collection:', error);
   }

@@ -12,6 +12,8 @@ function App() {
       console.log(response)
   }
 
+  // 'alex@lex.com', 'password'
+
   return (
     <>
       <div>
