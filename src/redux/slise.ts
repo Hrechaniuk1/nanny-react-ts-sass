@@ -2,7 +2,6 @@ import { createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 import {registerUserOperation, loginUserOperation, logoutOperation, getDataFromCollectionOperation} from './operatioms'
 import { NannyResponse } from "./operatioms";
-import { logoutUser } from "../fetch/firebase";
 
 
 function errorHandler(state: any, action: PayloadAction<any>) {
