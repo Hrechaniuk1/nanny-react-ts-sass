@@ -1,13 +1,20 @@
+// gen imports
 import { FC } from "react";
-// 
+import { useSelector } from "react-redux";
+// component imports
 import Header from "../../components/Hedaer/Hedaer";
 import Icon from "../../components/Icon/Icon";
+import { itemsSelector } from "../../redux/selector";
+import RegistrationModal from "../../components/RegistrationModal/RegistrationModal";
+import LoginModal from "../../components/LoginModal/LoginModal";
 // types
-type Props = {
-    amount: number
-}
 
-const MainPage: FC<Props> = ({amount}) => {
+// component
+
+const MainPage: FC = () => {
+
+    const items = useSelector(itemsSelector)
+
     return (
         <>
         <Header></Header>
@@ -22,8 +29,10 @@ const MainPage: FC<Props> = ({amount}) => {
             <span><Icon iconName="feCheck0"></Icon></span>
             <ul>
                 <li><h4>Experienced nannies</h4></li>
-                <li>{amount}</li>
+                <li>{items?.length}</li>
             </ul>
+            <RegistrationModal></RegistrationModal>
+            <LoginModal></LoginModal>
         </div>
         </>
     )

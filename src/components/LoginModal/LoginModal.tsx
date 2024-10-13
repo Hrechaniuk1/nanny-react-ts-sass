@@ -6,18 +6,17 @@ import * as Yup from 'yup'
 
 // component imports
 import Icon from "../Icon/Icon";
-import { registerUserOperation } from "../../redux/operatioms";
+import { loginUserOperation } from "../../redux/operatioms";
 
 // types
 type initialType = {
-    name: string,
     email: string,
     password: string
 }
 
 // component
 
-const RegistrationModal: FC = () => {
+const LoginModal: FC = () => {
 
     const [isVisible, setIsVisible] = useState(false)
     const dispatch = useAppDispatch()
@@ -27,18 +26,16 @@ const RegistrationModal: FC = () => {
     }
 
     const initial:initialType = {
-        name: '',
         email: '',
         password: ''
     }
 
     function onSubmit(values:initialType):void {
         // console.log(values)
-        dispatch(registerUserOperation(values))
+        dispatch(loginUserOperation(values))
     }
 
     const validationSchema: Yup.ObjectSchema<initialType> = Yup.object().shape({
-        name: Yup.string().min(2).max(20).required('Enter your name please'),
         email: Yup.string().email().required('Email address is required'),
         password: Yup.string().min(8).max(15).required('Password is required')
     })
@@ -53,8 +50,6 @@ const RegistrationModal: FC = () => {
                     validationSchema={validationSchema}
                 >
                     <Form>
-                        <Field name='name' required></Field>
-                        <ErrorMessage name='name' component='span'></ErrorMessage>
                         <Field type='email' name='email' required></Field>
                         <button onClick={onClick}>
                         {isVisible ? <Icon iconName="eye"></Icon>:<Icon iconName="eye-off"></Icon>}
@@ -65,7 +60,7 @@ const RegistrationModal: FC = () => {
                         {isVisible ? <Icon iconName="eye"></Icon>:<Icon iconName="eye-off"></Icon>}
                         </button>
                         <ErrorMessage name='password' component='span'></ErrorMessage>
-                        <button type='submit'>Register</button>
+                        <button type='submit'>Login</button>
                     </Form>
                 </Formik>
             </div>
@@ -73,4 +68,4 @@ const RegistrationModal: FC = () => {
     )
 }
 
-export default RegistrationModal
+export default LoginModal

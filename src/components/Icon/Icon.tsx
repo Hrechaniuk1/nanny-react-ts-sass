@@ -1,4 +1,4 @@
-import sprite from '../../../public/symbol-defs.svg'
+import sprite from '../../assets/symbol-defs.svg'
 import { FC } from "react";
 
 type type = {

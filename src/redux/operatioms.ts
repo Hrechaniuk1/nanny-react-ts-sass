@@ -3,7 +3,13 @@ import { AxiosError } from 'axios'
 
 import {loginUser, logoutUser, getDataFromCollection, registerUser} from '../fetch/firebase'
 
-type loginRegisterUser = {
+type LoginUser = {
+    email: string,
+    password: string
+}
+
+type RegisterUser = {
+    name: string,
     email: string,
     password: string
 }
@@ -36,7 +42,7 @@ type loginRegisterUserResult = boolean
     education: string;
   }
 
-export const loginUserOperation = createAsyncThunk<loginRegisterUserResult, loginRegisterUser, rejected>('login', async (data, thunkAPI) => {
+export const loginUserOperation = createAsyncThunk<loginRegisterUserResult, LoginUser, rejected>('login', async (data, thunkAPI) => {
     try {
       await loginUser(data.email, data.password)
       return true
@@ -48,7 +54,7 @@ export const loginUserOperation = createAsyncThunk<loginRegisterUserResult, logi
     }
 })
 
-export const registerUserOperation = createAsyncThunk<loginRegisterUserResult, loginRegisterUser, rejected>('register', async (data, thunkAPI) => {
+export const registerUserOperation = createAsyncThunk<loginRegisterUserResult, RegisterUser, rejected>('register', async (data, thunkAPI) => {
     try {
         await registerUser(data.email, data.password)
         return true
