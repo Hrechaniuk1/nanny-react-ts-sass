@@ -1,0 +1,49 @@
+@use '/src/styles/variables' as vars;
+@use '/src/styles/functions' as funk;
+
+@mixin bnt-feature ($gap, $padding-side, $padding-bottom-top) {
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+gap: $gap;
+padding-left: $padding-side;
+padding-right: $padding-side;
+padding-top: $padding-bottom-top;
+padding-bottom: $padding-bottom-top;
+}
+
+@mixin form() {
+    position: relative;
+    padding: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    border-radius: 30px;
+    background: rgb(251, 251, 251);
+
+    & input {
+        width: 438px;
+        padding: 16px 380px 16px 18px;
+        border: 1px solid rgba(17, 16, 28, 0.1);
+        border-radius: 12px;
+        outline: transparent;
+    }
+
+    & h2 {
+        margin-bottom: 20px;
+        font-size: vars.$font-size-h2;
+        font-weight: vars.$font-weight-bold;
+        line-height: funk.pixels-to-line-height(48px);
+        letter-spacing: funk.percent-to-em(-2%);
+    }
+
+    & p {
+        font-size: vars.$font-size-16;
+        font-weight: vars.$font-weight-reg;
+        color: vars.$font-gray;
+        line-height: funk.pixels-to-line-height(20px);
+        letter-spacing: funk.percent-to-em(0%);
+    }
+
+}

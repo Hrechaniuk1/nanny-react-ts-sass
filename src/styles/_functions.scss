@@ -1,0 +1,9 @@
+@use '/src/styles/variables' as vars;
+
+@function pixels-to-line-height($pixels) {
+    @return $pixels / vars.$font-size-16; 
+}
+
+@function percent-to-em($percent) {
+    @return (($percent / 100) * vars.$font-size-16)  * 1em; 
+}
