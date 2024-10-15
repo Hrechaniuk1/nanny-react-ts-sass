@@ -1,12 +1,14 @@
 // gen imports
 import { FC } from "react";
 import { useSelector } from "react-redux";
+
 // component imports
 import Header from "../../components/Hedaer/Hedaer";
 import Icon from "../../components/Icon/Icon";
 import { itemsSelector } from "../../redux/selector";
 import RegistrationModal from "../../components/RegistrationModal/RegistrationModal";
 import LoginModal from "../../components/LoginModal/LoginModal";
+
 // types
 
 // component

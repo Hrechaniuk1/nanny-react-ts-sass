@@ -1,9 +1,12 @@
+// gen imports
 import { FC, lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
-// 
+// lazy
 
 const MainPage = lazy(() => import('./pages/mainPage/MainPage'))
+
+// component
 
 const App: FC = () => {
   return (
