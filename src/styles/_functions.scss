@@ -5,5 +5,13 @@
 }
 
 @function percent-to-em($percent) {
-    @return (($percent / 100) * vars.$font-size-16)  * 1em; 
+    // @return (($percent / 100) * vars.$font-size-16)  * 1em; 
+        $value: (($percent / 100) * vars.$font-size-16) * 1em;
+    
+        @if $value < 0 {
+            @return 0 * 1em;
+        }
+    
+        @return $value;
+    
 }

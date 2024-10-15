@@ -5,6 +5,10 @@ import { Link } from "react-router-dom"
 
 // types
 
+// styles
+
+import css from './Header.module.scss'
+
 interface HeaderProps {
     customStyles?: React.CSSProperties; // Используем встроенный тип
   }
@@ -13,16 +17,16 @@ interface HeaderProps {
 const Header: FC<HeaderProps> = ({customStyles}) => {
 
     return (
-        <header>
-            <div><Link to='/'>Nanny.Services</Link></div>
-            <div>
-                <ul>
-                    <Link to='/'>Home</Link>
-                    <Link to='/nannies'>Nannies</Link>
+        <header style={customStyles} className={css.header}>
+            <div className={css.logoSection}><Link className={css.mainLink} to='/'>Nanny.Services</Link></div>
+            <div className={css.linkSection}>
+                <ul className={css.linkList}>
+                    <Link className={css.link} to='/'>Home</Link>
+                    <Link className={css.link} to='/nannies'>Nannies</Link>
                 </ul>
-                <ul>
-                    <li><button>Login</button></li>
-                    <li><button>Registration</button></li>
+                <ul className={css.btnList}>
+                    <li><button className={css.loginBtn}>Login</button></li>
+                    <li><button className={css.regBtn}>Registration</button></li>
                 </ul>
             </div>
         </header>

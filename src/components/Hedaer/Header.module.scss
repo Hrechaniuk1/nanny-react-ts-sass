@@ -1,0 +1,80 @@
+@use '/src/styles/forvardForModules' as frwd;
+
+.header {
+    position: absolute;
+    padding-top: frwd.$header-indent;
+    z-index: frwd.$z-header;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+
+.logoSection {
+    padding-left: 96px;
+    display: flex;
+    justify-content: start;
+
+}
+
+.linkSection {
+    display: flex;
+    gap: 92px;
+    justify-content: center;
+}
+
+.loginBtn {
+    @include frwd.bnt-feature(39px, 14px);
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: frwd.$border-radius-btn
+}
+
+.regBtn {
+    @include frwd.bnt-feature(40px, 14px);
+    background-color: frwd.$primary-color;
+    border-radius: frwd.$border-radius-btn
+}
+
+.btnList {
+    display: flex;
+    gap: 8px;
+}
+
+.linkList {
+    display: flex;
+    gap: 40px;
+}
+
+.link {
+    @include frwd.bnt-feature(0, 14px);
+    font-size: frwd.$font-size-16;
+    font-weight: frwd.$font-weight-reg;
+    letter-spacing: frwd.percent-to-em(-1%);
+    line-height: frwd.pixels-to-line-height(20px);
+    transition: frwd.$transition;
+}
+
+.mainLink {
+    font-size: frwd.$font-size-h3;
+    font-weight: frwd.$font-weight-bold;
+    @include frwd.bnt-feature(0, 10px);
+    transition: frwd.$transition;
+}
+
+.mainLink:hover {
+    color: gray;
+}
+
+.link:hover {
+    color: gray;
+}
+
+.loginBtn:hover {
+    color: gray;
+    border-color: gray;
+}
+
+.regBtn:hover {
+    background-color: frwd.$hover-color;
+    color: gray;
+}

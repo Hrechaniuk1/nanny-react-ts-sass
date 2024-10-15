@@ -1,16 +1,20 @@
 @use '/src/styles/variables' as vars;
 @use '/src/styles/functions' as funk;
 
-@mixin bnt-feature ($gap, $padding-side, $padding-bottom-top) {
+@mixin bnt-feature ($padding-side, $padding-bottom-top) {
     display: flex;
-flex-direction: row;
 justify-content: center;
 align-items: center;
-gap: $gap;
+outline: transparent;
 padding-left: $padding-side;
 padding-right: $padding-side;
 padding-top: $padding-bottom-top;
 padding-bottom: $padding-bottom-top;
+transition: vars.$transition;
+font-size: vars.$font-size-16;
+font-weight: vars.$font-weight-bold;
+line-height: funk.pixels-to-line-height(20px);
+letter-spacing: funk.percent-to-em(-1%);
 }
 
 @mixin form() {

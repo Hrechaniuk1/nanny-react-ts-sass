@@ -22,8 +22,12 @@ $font-weight-reg: 400;
 $font-weight-bold: 500;
 
 // z
+$z-header: 1000;
 $z-modal: 99999;
 
 // borders
 $border-radius-btn: 30px;
 $border-radius-feature: 24px;
+
+// effects 
+$transition: all 250ms ease-in-out;
