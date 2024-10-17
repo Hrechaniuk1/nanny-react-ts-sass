@@ -14,6 +14,7 @@ type initialType = {
     password: string
 }
 
+
 // component
 
 const LoginModal: FC = () => {
@@ -41,7 +42,6 @@ const LoginModal: FC = () => {
     })
 
     return (
-        <div>
             <div>
                 <Icon iconName="x"></Icon>
                 <Formik
@@ -64,7 +64,6 @@ const LoginModal: FC = () => {
                     </Form>
                 </Formik>
             </div>
-        </div>
     )
 }
 
