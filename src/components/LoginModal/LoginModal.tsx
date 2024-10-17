@@ -14,6 +14,8 @@ type initialType = {
     password: string
 }
 
+// styles 
+import css from './LoginModal.module.scss'
 
 // component
 
@@ -42,7 +44,7 @@ const LoginModal: FC = () => {
     })
 
     return (
-            <div>
+            <div className={css.formBox}>
                 <Icon iconName="x"></Icon>
                 <Formik
                     initialValues={initial}

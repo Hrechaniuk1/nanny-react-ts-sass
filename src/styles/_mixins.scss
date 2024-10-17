@@ -19,6 +19,7 @@ letter-spacing: funk.percent-to-em(-1%);
 
 @mixin form() {
     position: relative;
+    width: 566px;
     padding: 64px;
     display: flex;
     flex-direction: column;
@@ -39,7 +40,7 @@ letter-spacing: funk.percent-to-em(-1%);
         font-size: vars.$font-size-h2;
         font-weight: vars.$font-weight-bold;
         line-height: funk.pixels-to-line-height(48px);
-        letter-spacing: funk.percent-to-em(-2%);
+        // letter-spacing: funk.percent-to-em(-2%);
     }
 
     & p {
@@ -47,7 +48,7 @@ letter-spacing: funk.percent-to-em(-1%);
         font-weight: vars.$font-weight-reg;
         color: vars.$font-gray;
         line-height: funk.pixels-to-line-height(20px);
-        letter-spacing: funk.percent-to-em(0%);
+        // letter-spacing: funk.percent-to-em(0%);
     }
 
 }

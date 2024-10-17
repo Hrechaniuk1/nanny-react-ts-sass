@@ -1,0 +1,5 @@
+@use '/src/styles/forvardForModules' as s;
+
+.formBox {
+    @include s.form()
+}
