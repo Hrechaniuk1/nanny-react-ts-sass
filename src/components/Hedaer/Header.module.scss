@@ -3,10 +3,12 @@
 .header {
     position: absolute;
     padding-top: frwd.$header-indent;
+    padding-bottom: frwd.$header-indent;
     z-index: frwd.$z-header;
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
+    border-bottom: 1px solid rgba(251, 251, 251, 0.4);
 }
 
 .logoSection {
@@ -25,14 +27,18 @@
 .loginBtn {
     @include frwd.bnt-feature(39px, 14px);
     background-color: transparent;
-    border: 1px solid white;
-    border-radius: frwd.$border-radius-btn
+    border: 1px solid frwd.$color-white;
+    border-radius: frwd.$border-radius-btn;
+    color: frwd.$color-white;
+    cursor: frwd.$cursor;
 }
 
 .regBtn {
     @include frwd.bnt-feature(40px, 14px);
     background-color: frwd.$primary-color;
-    border-radius: frwd.$border-radius-btn
+    border-radius: frwd.$border-radius-btn;
+    color: frwd.$color-white;
+    cursor: frwd.$cursor;
 }
 
 .btnList {
@@ -52,6 +58,7 @@
     letter-spacing: frwd.percent-to-em(-1%);
     line-height: frwd.pixels-to-line-height(20px);
     transition: frwd.$transition;
+    color: frwd.$color-white;
 }
 
 .mainLink {
@@ -59,22 +66,24 @@
     font-weight: frwd.$font-weight-bold;
     @include frwd.bnt-feature(0, 10px);
     transition: frwd.$transition;
+    border: none;
+    color: frwd.$color-white;
 }
 
 .mainLink:hover {
-    color: gray;
+    color: frwd.$color-gray;
 }
 
 .link:hover {
-    color: gray;
+    color: frwd.$color-gray;
 }
 
 .loginBtn:hover {
-    color: gray;
+    color: frwd.$color-gray;
     border-color: gray;
 }
 
 .regBtn:hover {
     background-color: frwd.$hover-color;
-    color: gray;
+    color: frwd.$color-gray;
 }

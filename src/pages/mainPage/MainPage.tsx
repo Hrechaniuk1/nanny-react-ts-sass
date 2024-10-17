@@ -9,7 +9,8 @@ import { itemsSelector } from "../../redux/selector";
 import RegistrationModal from "../../components/RegistrationModal/RegistrationModal";
 import LoginModal from "../../components/LoginModal/LoginModal";
 
-// types
+// styles
+import css from './MainPage.module.scss'
 
 // component
 
@@ -20,21 +21,23 @@ const MainPage: FC = () => {
     return (
         <>
         <Header></Header>
-        <div>
-            <h1>Make Life Easier for the Family:</h1>
-            <p>Find Babysitters Online for All Occasions</p>
-            <button>Get started 
-                <Icon iconName='Arrow-16'></Icon>
+        <div className={css.container}>
+        <div className={css.titleContainer}>
+            <h1 className={css.title}>Make Life Easier for the Family:</h1>
+            <p className={css.description}>Find Babysitters Online for All Occasions</p>
+            <button className={css.getStarted}>Get started 
+                <Icon className={css.iconGet} iconName='Arrow-16'></Icon>
             </button>
         </div>
-        <div>
-            <span><Icon iconName="feCheck0"></Icon></span>
+        <div className={css.imgContainer}>
+            <div className={css.nannies}>
+            <span className={css.iconBox}><Icon className={css.icon} iconName="feCheck0"></Icon></span>
             <ul>
                 <li><h4>Experienced nannies</h4></li>
                 <li>{items?.length}</li>
             </ul>
-            <RegistrationModal></RegistrationModal>
-            <LoginModal></LoginModal>
+            </div>
+        </div>
         </div>
         </>
     )

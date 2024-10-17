@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 
 const MainPage = lazy(() => import('./pages/mainPage/MainPage'))
 
+
 // component
 
 const App: FC = () => {

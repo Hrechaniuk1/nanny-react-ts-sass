@@ -2,12 +2,13 @@ import sprite from '../../assets/symbol-defs.svg'
 import { FC } from "react";
 
 type type = {
-    iconName: string
+    iconName: string;
+    className: string;
 }
 
-const Icon:FC<type> = ({iconName}) => {
+const Icon:FC<type> = ({iconName, className}) => {
     return (
-        <svg>
+        <svg className={className}>
             <use href={`${sprite}#icon-${iconName}`} ></use>
         </svg>
     )
