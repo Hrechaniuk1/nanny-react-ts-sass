@@ -22,6 +22,16 @@ const Header: FC<HeaderProps> = ({customStyles}) => {
     const [loginModalIsOpnen, setLoginModalIsOpen] = useState(false)
     const [regModalIsOpnen, setRegModalIsOpen] = useState(false)
 
+    function setBodyOverflow() {
+        if(!loginModalIsOpnen && !regModalIsOpnen) {
+             document.body.style.overflow = ''
+        } else {
+            document.body.style.overflow = 'hidden'
+        }
+    }
+
+    setBodyOverflow()
+
     function loginClickHandler() {
         setLoginModalIsOpen(true)
     }
