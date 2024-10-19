@@ -3,3 +3,67 @@
 .formBox {
     @include s.form()
 }
+
+.title {
+    font-size: s.$font-size-h2;
+    font-weight: s.$font-weight-bold;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: s.$font-size-16;
+    font-weight: s.$font-weight-reg;
+    color: s.$font-gray;
+    margin-bottom: 40px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.inputBox {
+    position: relative;
+}
+
+.isVisBtn {
+    position: absolute;
+    right: 20px;
+    top: 17px;
+    cursor: s.$cursor;
+    width: 40px;
+}
+
+.iconEye {
+    width: 25px;
+    height: 25px;
+    stroke: black;
+    fill: s.$color-white;
+}
+
+.iconClose {
+    width: 30px;
+    height: 30px;
+    stroke: black;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: s.$cursor
+}
+
+.submitBtn {
+    @include s.bnt-feature(16px, 16px);
+    background-color: s.$primary-color;
+    width: 438px;
+    border-radius: s.$border-radius-btn;
+    margin-top: 30px;
+    color: s.$color-white;
+}
+
+.submitBtn:hover {
+    background-color: s.$hover-color;
+}

@@ -23,13 +23,12 @@ letter-spacing: funk.percent-to-em(-1%);
     padding: 64px;
     display: flex;
     flex-direction: column;
-    gap: 40px;
     border-radius: 30px;
     background: rgb(251, 251, 251);
 
     & input {
         width: 438px;
-        padding: 16px 380px 16px 18px;
+        padding: 16px 16px 16px 18px;
         border: 1px solid rgba(17, 16, 28, 0.1);
         border-radius: 12px;
         outline: transparent;
