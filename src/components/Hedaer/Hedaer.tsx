@@ -1,4 +1,4 @@
-import { FC, useState } from "react"; 
+import { FC, useState, useEffect } from "react"; 
 import { Link } from "react-router-dom"
 
 // component imports 
@@ -7,20 +7,35 @@ import LoginModal from "../../components/LoginModal/LoginModal";
 import Modal from "../../components/Modal/Modal";
 
 // types
-
-// styles
-
-import css from './Header.module.scss'
-
 interface HeaderProps {
     customStyles?: React.CSSProperties; // Используем встроенный тип
   }
+
+// styles
+import css from './Header.module.scss'
 
 
 const Header: FC<HeaderProps> = ({customStyles}) => {
 
     const [loginModalIsOpnen, setLoginModalIsOpen] = useState(false)
     const [regModalIsOpnen, setRegModalIsOpen] = useState(false)
+
+    useEffect(() => {
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape" && loginModalIsOpnen) {
+              setLoginModalIsOpen(false)
+            }
+            if (event.key === "Escape" && regModalIsOpnen) {
+                setRegModalIsOpen(false)
+              }
+          };
+      
+          document.addEventListener("keydown", handleKeyDown);
+
+          return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+          };
+    }, [loginModalIsOpnen, regModalIsOpnen])
 
     function setBodyOverflow() {
         if(!loginModalIsOpnen && !regModalIsOpnen) {

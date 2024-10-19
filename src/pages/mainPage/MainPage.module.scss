@@ -3,7 +3,7 @@
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 100vh;
+    height: 100%;
 }
 
 .titleContainer {
@@ -70,7 +70,8 @@
     border-top-right-radius: f.$border-radius-btn;
     border-bottom-right-radius: f.$border-radius-btn;
     padding-right: 50px;
-    padding-top: 568px;
+    padding-top: 528px;
+    padding-bottom: 30px;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), 
