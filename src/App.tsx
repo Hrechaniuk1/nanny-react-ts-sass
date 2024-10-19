@@ -11,7 +11,6 @@ const NanniesPage = lazy(() => import('./pages/NanniesPage/NanniesPage'))
 
 
 // component
-
 const App: FC = () => {
 
   return (
