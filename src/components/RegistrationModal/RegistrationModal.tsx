@@ -7,6 +7,7 @@ import * as Yup from 'yup'
 // component imports
 import Icon from "../Icon/Icon";
 import { registerUserOperation } from "../../redux/operatioms";
+import css from './RegistrationModal.module.scss'
 
 // types
 type initialType = {
@@ -15,26 +16,42 @@ type initialType = {
     password: string
 }
 
+type registrFormProps = {
+    isOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+
 // component
 
-const RegistrationModal: FC = () => {
+const RegistrationModal: FC<registrFormProps> = ({isOpen}) => {
 
     const [isVisible, setIsVisible] = useState(false)
+    const [isPasswordVisible, setIsPasswordVisible] = useState('password')
+
     const dispatch = useAppDispatch()
 
     function onClick() {
         setIsVisible(!isVisible)
+        if(isPasswordVisible === 'password') {  
+            setIsPasswordVisible('text')
+        } else {
+            setIsPasswordVisible('password')
+        }
+        
+    }
+
+    function closeModal() {
+        isOpen(false)
+    }
+
+    function onSubmit(values:initialType):void {
+        // console.log(values)
+        dispatch(registerUserOperation(values))
     }
 
     const initial:initialType = {
         name: '',
         email: '',
         password: ''
-    }
-
-    function onSubmit(values:initialType):void {
-        // console.log(values)
-        dispatch(registerUserOperation(values))
     }
 
     const validationSchema: Yup.ObjectSchema<initialType> = Yup.object().shape({
@@ -44,32 +61,31 @@ const RegistrationModal: FC = () => {
     })
 
     return (
-        <div>
-            <div>
-                <Icon iconName="x"></Icon>
+            <div className={css.formBox}>
+                <h3 className={css.title}>Registration</h3>
+                <p className={css.description}>Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information.</p>
+                <button className={css.closeBtn} onClick={closeModal}><Icon className={css.iconClose} iconName="x"></Icon></button>
                 <Formik
                     initialValues={initial}
                     onSubmit={onSubmit}
                     validationSchema={validationSchema}
                 >
-                    <Form>
-                        <Field name='name' required></Field>
+                    <Form className={css.form}>
+                        <Field name='name' placeholder='Your name' required></Field>
                         <ErrorMessage name='name' component='span'></ErrorMessage>
-                        <Field type='email' name='email' required></Field>
-                        <button onClick={onClick}>
-                        {isVisible ? <Icon iconName="eye"></Icon>:<Icon iconName="eye-off"></Icon>}
-                        </button>
+                        <Field type='email' name='email' placeholder='Email' required></Field>
                         <ErrorMessage name='email' component='span'></ErrorMessage>
-                        <Field type='password' name='password' required></Field>
-                        <button onClick={onClick}>
-                        {isVisible ? <Icon iconName="eye"></Icon>:<Icon iconName="eye-off"></Icon>}
+                        <div className={css.inputBox}>
+                        <Field type={isPasswordVisible} name='password' placeholder='Password' required></Field>
+                        <button className={css.isVisBtn} onClick={onClick} type="button">
+                        {isVisible ? <Icon className={css.iconEye} iconName="eye"></Icon>:<Icon className={css.iconEye} iconName="eye-off"></Icon>}
                         </button>
+                        </div>
                         <ErrorMessage name='password' component='span'></ErrorMessage>
-                        <button type='submit'>Register</button>
+                        <button className={css.submitBtn} type='submit'>Register</button>
                     </Form>
                 </Formik>
             </div>
-        </div>
     )
 }
 

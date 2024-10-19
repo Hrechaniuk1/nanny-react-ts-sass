@@ -49,7 +49,7 @@ const Header: FC<HeaderProps> = ({customStyles}) => {
             <LoginModal isOpen={setLoginModalIsOpen} ></LoginModal>
         </Modal>
         <Modal isOpen={regModalIsOpnen}>
-            <RegistrationModal></RegistrationModal>
+            <RegistrationModal isOpen={setRegModalIsOpen}></RegistrationModal>
         </Modal>
         </>
     )
