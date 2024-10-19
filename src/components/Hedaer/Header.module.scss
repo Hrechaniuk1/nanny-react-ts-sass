@@ -9,6 +9,7 @@
     grid-template-columns: 1fr 1fr;
     width: 100%;
     border-bottom: 1px solid rgba(251, 251, 251, 0.4);
+    background-color: frwd.$primary-color;
 }
 
 .logoSection {
@@ -86,4 +87,17 @@
 .regBtn:hover {
     background-color: frwd.$hover-color;
     color: frwd.$color-gray;
+}
+
+.isHere::after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    background-color: frwd.$color-white;
+    position: absolute;
+    bottom: 25px;
+    left: auto;
+    right: auto;
+
 }

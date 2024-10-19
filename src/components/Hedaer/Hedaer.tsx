@@ -1,5 +1,5 @@
 import { FC, useState, useEffect } from "react"; 
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 // component imports 
 import RegistrationModal from "../../components/RegistrationModal/RegistrationModal";
@@ -7,19 +7,18 @@ import LoginModal from "../../components/LoginModal/LoginModal";
 import Modal from "../../components/Modal/Modal";
 
 // types
-interface HeaderProps {
-    customStyles?: React.CSSProperties; // Используем встроенный тип
-  }
-
 // styles
 import css from './Header.module.scss'
 
 
-const Header: FC<HeaderProps> = ({customStyles}) => {
+const Header: FC = () => {
 
+    const location = useLocation() 
+    const locationPath = location.pathname
     const [loginModalIsOpnen, setLoginModalIsOpen] = useState(false)
     const [regModalIsOpnen, setRegModalIsOpen] = useState(false)
 
+    // esc event listener for modal window
     useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === "Escape" && loginModalIsOpnen) {
@@ -37,32 +36,28 @@ const Header: FC<HeaderProps> = ({customStyles}) => {
           };
     }, [loginModalIsOpnen, regModalIsOpnen])
 
-    function setBodyOverflow() {
-        if(!loginModalIsOpnen && !regModalIsOpnen) {
-             document.body.style.overflow = ''
-        } else {
-            document.body.style.overflow = 'hidden'
-        }
-    }
-
-    setBodyOverflow()
-
+    // login modal opener
     function loginClickHandler() {
         setLoginModalIsOpen(true)
     }
 
+    // registration modal opener
     function regClickHandler() {
         setRegModalIsOpen(true)
     }
 
     return (
         <>
-        <header style={customStyles} className={css.header}>
+        <header style={{ 
+    backgroundColor: locationPath === '/' ? 'transparent' : undefined, 
+    paddingTop: locationPath === '/'  ? '40px' : undefined
+  }}  className={css.header}>
             <div className={css.logoSection}><Link className={css.mainLink} to='/'>Nanny.Services</Link></div>
             <div className={css.linkSection}>
                 <ul className={css.linkList}>
                     <Link className={css.link} to='/'>Home</Link>
-                    <Link className={css.link} to='/nannies'>Nannies</Link>
+                    <Link className={`${css.link} ${locationPath === '/nannies' ? css.isHere : null}`} to='/nannies'>Nannies</Link>
+                    {locationPath !== '/' ? <Link className={`${css.link} ${locationPath === '/favorites' ? css.isHere : null}`} to='/favorites'>Favorites</Link> : null}
                 </ul>
                 <ul className={css.btnList}>
                     <li><button onClick={loginClickHandler} className={css.loginBtn}>Login</button></li>

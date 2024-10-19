@@ -2,21 +2,28 @@
 import { FC, lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
-// lazy
+// components import
+import Header from "./components/Hedaer/Hedaer";
 
+// lazy
 const MainPage = lazy(() => import('./pages/mainPage/MainPage'))
+const NanniesPage = lazy(() => import('./pages/NanniesPage/NanniesPage'))
 
 
 // component
 
 const App: FC = () => {
+
   return (
+    <>
+    <Header></Header>
     <Suspense>
     <Routes>
       <Route path="/" element={<MainPage></MainPage>} ></Route>
-      <Route path="/nannies" element={<div></div>} ></Route>
+      <Route path="/nannies" element={<NanniesPage></NanniesPage>} ></Route>
     </Routes>
     </Suspense>
+    </>
   )
 }
 

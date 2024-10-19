@@ -5,7 +5,6 @@ import { Link } from "react-router-dom"
 
 
 // component imports
-import Header from "../../components/Hedaer/Hedaer";
 import Icon from "../../components/Icon/Icon";
 import { itemsSelector } from "../../redux/selector";
 
@@ -20,7 +19,6 @@ const MainPage: FC = () => {
 
     return (
         <>
-        <Header></Header>
         <div className={css.container}>
         <div className={css.titleContainer}>
             <h1 className={css.title}>Make Life Easier for the Family:</h1>
