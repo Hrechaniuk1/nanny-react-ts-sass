@@ -1,17 +1,25 @@
 import { FC, useState, useEffect } from "react"; 
 import { Link, useLocation } from "react-router-dom"
+import { useSelector } from "react-redux";
 
-// component imports 
+// custom imports 
 import RegistrationModal from "../../components/RegistrationModal/RegistrationModal";
 import LoginModal from "../../components/LoginModal/LoginModal";
 import Modal from "../../components/Modal/Modal";
+import { isLoggedInSelector } from "../../redux/selector";
+import { logoutOperation } from "../../redux/operatioms";
+import { useAppDispatch } from "../../genTypes/types";
 
 // types
+
 // styles
 import css from './Header.module.scss'
 
 
 const Header: FC = () => {
+    const dispatch = useAppDispatch()
+
+    const isLoggedIn = useSelector(isLoggedInSelector) 
 
     const location = useLocation() 
     const locationPath = location.pathname
@@ -46,6 +54,11 @@ const Header: FC = () => {
         setRegModalIsOpen(true)
     }
 
+    // logout function
+    function logOutHandler() {
+        dispatch(logoutOperation())
+    }
+
     return (
         <>
         <header style={{ 
@@ -59,10 +72,13 @@ const Header: FC = () => {
                     <Link className={`${css.link} ${locationPath === '/nannies' ? css.isHere : null}`} to='/nannies'>Nannies</Link>
                     {locationPath !== '/' ? <Link className={`${css.link} ${locationPath === '/favorites' ? css.isHere : null}`} to='/favorites'>Favorites</Link> : null}
                 </ul>
-                <ul className={css.btnList}>
+                {!isLoggedIn ? <ul className={css.btnList}>
                     <li><button onClick={loginClickHandler} className={css.loginBtn}>Login</button></li>
                     <li><button onClick={regClickHandler} className={css.regBtn}>Registration</button></li>
-                </ul>
+                </ul> : null}
+                {isLoggedIn ? <ul className={css.btnList}>
+                    <li><button className={css.loginBtn} onClick={logOutHandler}>Log Out</button></li>
+                </ul> : null}
             </div>
         </header>
         <Modal isOpen={loginModalIsOpnen}>
