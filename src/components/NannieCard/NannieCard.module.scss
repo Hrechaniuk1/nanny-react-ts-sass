@@ -1,0 +1,161 @@
+@use '../../styles/forvardForModules' as s;
+
+.cardContainer {
+    position: relative;
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    background-color: s.$color-white;
+    border-radius: s.$border-radius-feature;
+}
+
+.imgBox {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+}
+
+.imgBox img {
+    object-fit: cover;
+    border: 1px solid red;
+    border-radius: s.$border-radius-btn;
+    padding: 12px;
+}
+
+.nannieBox {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.title {
+    color: s.$font-gray;
+    font-size: s.$font-size-16;
+    font-weight: s.$font-weight-reg;
+    line-height: s.pixels-to-line-height(24px);
+}
+
+.name {
+    font-size: s.$font-size-h3;
+    font-weight: s.$font-weight-bold;
+    line-height: s.pixels-to-line-height(24px);
+}
+
+.featuresList {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.feature {
+    @include s.bnt-feature(16px, 8px);
+    background-color: s.$feature-color;
+    color: s.$stroke-color-black;
+    border-radius: s.$border-radius-feature;
+}
+
+.about {
+    font-size: s.$font-size-16;
+    color: s.$color-gray;
+}
+
+.more {
+    width: 88px;
+    text-decoration: underline;
+    font-weight: s.$font-weight-bold;
+    font-size: s.$font-size-16;
+    cursor: s.$cursor;
+    white-space: nowrap;
+
+}
+
+.favBtn {
+    cursor: s.$cursor;
+}
+
+.infoBoard {
+    position: absolute;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    top: 24px;
+    right: 24px;
+}
+
+.iconLocation {
+stroke: s.$stroke-color-black;
+fill: none;
+width: 12px;
+height: 15px;
+}
+
+.iconStar {
+fill: s.$rating-color;
+width: 16px;
+height: 16px;
+}
+
+.iconHeart {
+stroke: s.$stroke-color-black;
+width: 26px;
+height: 26px;
+fill: none;
+transition: s.$transition;
+}
+
+.iconHeartChosen {
+stroke: s.$fav-chosen-color;
+width: 26px;
+height: 26px;
+fill: none;
+transition: s.$transition;
+}
+
+// read more styles
+.revList {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.reviewList {
+    display: flex;
+    gap: 12px;
+}
+
+.revImg {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: rgba(16, 57, 49, 0.2);
+    color: s.$color-white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.revNameList {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.iconRatingStar {
+    width: 16px;
+    height: 16px;
+    fill: s.$rating-color;
+    margin-right: 8px;
+}
+
+.readMoreHidden {
+ max-height: 0px;
+ overflow: hidden;
+ transition: s.$transition;
+}
+
+.readMoreVisible {
+max-height: 500px;
+transition: s.$transition;
+
+}

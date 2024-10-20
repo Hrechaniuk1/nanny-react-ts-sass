@@ -13,9 +13,6 @@ function loadingHandler(state: any) {
   
 }
 
-type Item = {
-    id: string;
-};
 
 type ItemArray = Item[];
 
@@ -37,11 +34,11 @@ const mainSlice = createSlice({
     name: 'nannys',
     initialState: initialState,
     reducers: {
-        addFavs: (state, action: PayloadAction<Item>) => {
+        addFavs: (state, action: PayloadAction<string>) => {
                 state.favourite.push(action.payload);
 
             },
-        delFavs: (state, action: PayloadAction<Item>) => {
+        delFavs: (state, action: PayloadAction<string>) => {
                 state.favourite = state.favourite.filter(item => item.id !== action.payload.id)
             }
     },
@@ -71,4 +68,5 @@ const mainSlice = createSlice({
     }
 })
 
+export const {addFavs, delFavs} = mainSlice.actions
 export const reducer = mainSlice.reducer

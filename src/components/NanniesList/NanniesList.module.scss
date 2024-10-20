@@ -1,0 +1,8 @@
+@use '../../styles/forvardForModules' as s;
+
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
