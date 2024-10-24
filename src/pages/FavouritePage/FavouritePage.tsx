@@ -14,7 +14,7 @@ const FavouritePage: FC = () => {
 
     const items = useSelector(itemsSelector)
     const favs = useSelector(favsSelector)
-
+    
     return (
         <div className={css.page}>
             <NanniesList data={items} idList={favs}></NanniesList>

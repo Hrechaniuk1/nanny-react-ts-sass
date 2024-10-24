@@ -21,7 +21,7 @@ const App: FC = () => {
     <Routes>
       <Route path="/" element={<MainPage></MainPage>} ></Route>
       <Route path="/nannies" element={<NanniesPage></NanniesPage>} ></Route>
-      <Route path="/favorite" element={<FavouritePage></FavouritePage>} ></Route>
+      <Route path="/favorites" element={<FavouritePage></FavouritePage>} ></Route>
     </Routes>
     </Suspense>
     </>
