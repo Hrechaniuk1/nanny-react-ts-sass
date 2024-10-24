@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 
 // components import
 import Header from "./components/Hedaer/Hedaer";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 // lazy
 const MainPage = lazy(() => import('./pages/mainPage/MainPage'))
@@ -20,8 +21,8 @@ const App: FC = () => {
     <Suspense>
     <Routes>
       <Route path="/" element={<MainPage></MainPage>} ></Route>
-      <Route path="/nannies" element={<NanniesPage></NanniesPage>} ></Route>
-      <Route path="/favorites" element={<FavouritePage></FavouritePage>} ></Route>
+      <Route path="/nannies" element={<PrivateRoute Component={NanniesPage}></PrivateRoute>} ></Route>
+      <Route path="/favorites" element={<PrivateRoute Component={FavouritePage} ></PrivateRoute>} ></Route>
     </Routes>
     </Suspense>
     </>
