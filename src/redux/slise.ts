@@ -14,7 +14,7 @@ function loadingHandler(state: any) {
 }
 
 
-type ItemArray = Item[];
+type ItemArray = string[];
 
 export type initialType = {
     isLoggedIn: boolean
@@ -39,7 +39,7 @@ const mainSlice = createSlice({
 
             },
         delFavs: (state, action: PayloadAction<string>) => {
-                state.favourite = state.favourite.filter(item => item.id !== action.payload.id)
+                state.favourite = state.favourite.filter(item => item !== action.payload)
             }
     },
     extraReducers: builder => {
@@ -52,6 +52,8 @@ const mainSlice = createSlice({
             .addCase(logoutOperation.pending, loadingHandler)
             .addCase(logoutOperation.fulfilled, (state) => {
                 state.isLoggedIn = false
+                state.items = undefined
+                state.favourite = []
             })
             .addCase(logoutOperation.rejected, errorHandler)
             .addCase(getDataFromCollectionOperation.pending, loadingHandler)

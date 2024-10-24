@@ -8,6 +8,7 @@ import Header from "./components/Hedaer/Hedaer";
 // lazy
 const MainPage = lazy(() => import('./pages/mainPage/MainPage'))
 const NanniesPage = lazy(() => import('./pages/NanniesPage/NanniesPage'))
+const FavouritePage = lazy(() => import('./pages/FavouritePage/FavouritePage'))
 
 
 // component
@@ -20,6 +21,7 @@ const App: FC = () => {
     <Routes>
       <Route path="/" element={<MainPage></MainPage>} ></Route>
       <Route path="/nannies" element={<NanniesPage></NanniesPage>} ></Route>
+      <Route path="/favorite" element={<FavouritePage></FavouritePage>} ></Route>
     </Routes>
     </Suspense>
     </>

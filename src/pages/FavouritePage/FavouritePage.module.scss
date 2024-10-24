@@ -1,0 +1,7 @@
+@use '../../styles/forvardForModules' as s;
+
+.page {
+    padding: 40px;
+    padding-top: 140px;
+    background-color: s.$nannies-page-bg-color;
+}
