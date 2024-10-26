@@ -1,5 +1,5 @@
 // gen imports 
-import Select from 'react-select'
+import Select, { StylesConfig } from 'react-select'
 import {FC} from 'react'
 
 // styles
@@ -18,6 +18,39 @@ const options: OptionType[] = [
     {value: 'name', label: 'Name'},
 ] 
 
+const customStyles: StylesConfig<OptionType> = {
+    control: (provided) => ({
+      ...provided,
+      backgroundColor: 'rgb(16, 57, 49)', 
+      border: 'none',
+      boxShadow: 'none',
+      borderRadius: '14px',
+      '&:hover': {
+        backgroundColor: 'rgb(12, 46, 40)', 
+      },
+      color: 'white',
+      padding: '7px',
+    }),
+    indicatorSeparator: () => ({
+        display: 'none',
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      backgroundColor: 'white',
+      color: state.isFocused ? 'black' : 'gray',
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: 'white',
+    }),
+    menu: (provided) => ({
+        ...provided,
+        borderRadius: '20px', 
+        overflow: 'hidden'
+      }),
+  };
+
+
 const FilterSelect: FC = () => {
 
     function changeHandler() {
@@ -29,6 +62,9 @@ const FilterSelect: FC = () => {
         options={options}
         placeholder='Change filters'
         onChange={changeHandler}
+        defaultValue={options[2]}
+        styles={customStyles}
+        className={css.selectContainer}
         >
 
         </Select>
