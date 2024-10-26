@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 // custom imports
 import { favsSelector, itemsSelector } from '../../redux/selector'
 import NanniesList from '../../components/NanniesList/NanniesList'
+import FilterSelect from '../../components/FilterSelect/FilterSelect'
 
 // styles
 import css from './FavouritePage.module.scss'
@@ -17,6 +18,7 @@ const FavouritePage: FC = () => {
     
     return (
         <div className={css.page}>
+            <FilterSelect></FilterSelect>
             <NanniesList data={items} idList={favs}></NanniesList>
         </div>
     )
