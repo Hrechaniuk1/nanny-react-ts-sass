@@ -1,5 +1,5 @@
 // gen imports
-import {FC} from 'react'
+import {FC, useState} from 'react'
 import { useSelector } from 'react-redux'
 
 // custom imports
@@ -13,12 +13,13 @@ import css from './FavouritePage.module.scss'
 // component 
 const FavouritePage: FC = () => {
 
+    const [sortBy, setSortBy] = useState('name')
     const items = useSelector(itemsSelector)
     const favs = useSelector(favsSelector)
     
     return (
         <div className={css.page}>
-            <FilterSelect></FilterSelect>
+            <FilterSelect setSort={setSortBy}></FilterSelect>
             <NanniesList data={items} idList={favs}></NanniesList>
         </div>
     )
