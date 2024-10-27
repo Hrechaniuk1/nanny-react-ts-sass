@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { QuerySnapshot } from "firebase/firestore";
+import { orderBy, QuerySnapshot } from "firebase/firestore";
 import { firebaseConfig } from "./keys";
 import { NannyResponse } from "../redux/operatioms";
 
@@ -52,15 +52,19 @@ export const logoutUser = async () => {
 
 
 
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, query } from "firebase/firestore";
 
-// Инициализация Firestore
 const db = getFirestore(app);
 
-// Получение данных из коллекции
-export const getDataFromCollection = async () => {
+export const getDataFromCollection = async (sortBy: string, sortOrder: 'asc'|'desc' = 'asc') => {
   try {
-    const querySnapshot = await getDocs(collection(db, "nannys"));
+
+    const nanniesQuery = query(
+      collection(db, "nannys"),
+      orderBy(sortBy, sortOrder)
+    );
+
+    const querySnapshot = await getDocs(nanniesQuery);
     const processNannyDocs = (querySnapshot: QuerySnapshot): NannyResponse[] => {
       return querySnapshot.docs.map(doc => ({
           id: doc.id,

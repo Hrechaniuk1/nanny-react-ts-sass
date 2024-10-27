@@ -23,9 +23,9 @@ const NanniesPage: FC = () => {
 
     useEffect(() => {
 
-        dispatch(getDataFromCollectionOperation())
+        dispatch(getDataFromCollectionOperation(sortBy))
 
-    }, [dispatch])
+    }, [dispatch, sortBy])
 
     const nannies = useSelector(itemsSelector)
 

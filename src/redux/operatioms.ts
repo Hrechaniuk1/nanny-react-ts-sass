@@ -78,9 +78,9 @@ export const logoutOperation = createAsyncThunk<boolean, void, rejected>('logout
     }
 })
 
-export const getDataFromCollectionOperation = createAsyncThunk<NannyResponse[] | undefined, undefined, rejected>('info', async (_, thunkAPI) => {
+export const getDataFromCollectionOperation = createAsyncThunk<NannyResponse[] | undefined, string, rejected>('info', async (sortBy, thunkAPI) => {
     try {
-        const response = await getDataFromCollection()
+        const response = await getDataFromCollection(sortBy)
         return response
     } catch (err) {
         if(err instanceof AxiosError) {
