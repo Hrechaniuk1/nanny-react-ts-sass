@@ -1,6 +1,6 @@
 // gen imports 
-import Select, { StylesConfig } from 'react-select'
-import {FC} from 'react'
+import Select, { StylesConfig,  SingleValue, MultiValue, ActionMeta } from 'react-select'
+import React, {FC} from 'react' 
 
 // styles
 import css from './FilterSelect.module.scss'
@@ -9,6 +9,10 @@ import css from './FilterSelect.module.scss'
 type OptionType = {
     value: string;
     label: string;
+}
+
+type FilterSelectProps = {
+  setSort: React.Dispatch<React.SetStateAction<string>>
 }
 
 // component
@@ -50,11 +54,22 @@ const customStyles: StylesConfig<OptionType> = {
       }),
   };
 
+  function isSingleValue(option: SingleValue<OptionType> | MultiValue<OptionType>): option is SingleValue<OptionType> {
+    return option !== null && !Array.isArray(option);
+  }
 
-const FilterSelect: FC = () => {
+const FilterSelect: FC<FilterSelectProps> = ({setSort}) => {
 
-    function changeHandler() {
-
+    function changeHandler (
+      newValue: SingleValue<OptionType> | MultiValue<OptionType>, 
+      actionMeta: ActionMeta<OptionType>
+  ) {
+    if (newValue) {
+      if(isSingleValue(newValue)) {
+        console.log(newValue.value)
+      setSort(newValue.value)
+        }
+      }
     }
 
     return (

@@ -46,6 +46,7 @@ const LoginModal: FC<loginFormProps> = ({isOpen}) => {
 
     function onSubmit(values:initialType):void {
         dispatch(loginUserOperation(values))
+        isOpen(false)
     }
 
     const initial:initialType = {

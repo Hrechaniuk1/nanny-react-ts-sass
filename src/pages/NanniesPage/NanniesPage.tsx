@@ -1,5 +1,5 @@
 // gen imports
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 // custom imports
@@ -19,6 +19,7 @@ import css from './NanniesPage.module.scss'
 const NanniesPage: FC = () => {
 
     const dispatch = useAppDispatch()
+    const [sortBy, setSortBy] = useState('name')
 
     useEffect(() => {
 
@@ -31,7 +32,7 @@ const NanniesPage: FC = () => {
 
     return (
         <div className={css.page}>
-            <FilterSelect></FilterSelect>
+            <FilterSelect setSort={setSortBy}></FilterSelect>
             <NanniesList data={nannies}></NanniesList>
         </div>
     )

@@ -46,6 +46,7 @@ const RegistrationModal: FC<registrFormProps> = ({isOpen}) => {
     function onSubmit(values:initialType):void {
         // console.log(values)
         dispatch(registerUserOperation(values))
+        isOpen(false)
     }
 
     const initial:initialType = {
