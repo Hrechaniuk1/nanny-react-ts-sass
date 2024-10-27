@@ -16,11 +16,13 @@ const FavouritePage: FC = () => {
     const [sortBy, setSortBy] = useState('name')
     const items = useSelector(itemsSelector)
     const favs = useSelector(favsSelector)
+
+    
     
     return (
         <div className={css.page}>
             <FilterSelect setSort={setSortBy}></FilterSelect>
-            <NanniesList data={items} idList={favs}></NanniesList>
+            <NanniesList data={items} idList={favs} sotrBy={sortBy}></NanniesList>
         </div>
     )
 
