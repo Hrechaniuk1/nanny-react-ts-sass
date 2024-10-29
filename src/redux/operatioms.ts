@@ -1,8 +1,11 @@
+// gen imports
 import {createAsyncThunk} from '@reduxjs/toolkit'
 import { AxiosError } from 'axios'
 
+// custom imports
 import {loginUser, logoutUser, getDataFromCollection, registerUser} from '../fetch/firebase'
 
+// types
 type LoginUser = {
     email: string,
     password: string
@@ -42,10 +45,19 @@ type loginRegisterUserResult = boolean
     education: string;
   }
 
+
+// functions
+
 export const loginUserOperation = createAsyncThunk<loginRegisterUserResult, LoginUser, rejected>('login', async (data, thunkAPI) => {
     try {
-      await loginUser(data.email, data.password)
-      return true
+      const result = await loginUser(data.email, data.password)
+      console.log(result)
+        if(result) {
+            return true
+        } else {
+            return thunkAPI.rejectWithValue('Invalid login credentials');
+        }
+    //   return true
     } catch (err) {
         if(err instanceof AxiosError) {
             return thunkAPI.rejectWithValue(err.message)

@@ -32,7 +32,8 @@ export const loginUser = async (email: string, password: string) => {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     // Успешный логин
     const user = userCredential.user;
-    console.log('User logged in:', user);
+    return user
+    
   } catch (error) {
     const errorCode = (error as { code: string }).code; // Приведение типа для получения свойства code
     const errorMessage = (error as { message: string }).message; // Приведение типа для получения свойства message

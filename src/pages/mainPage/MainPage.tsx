@@ -32,7 +32,7 @@ const MainPage: FC = () => {
             <span className={css.iconBox}><Icon className={css.icon} iconName="feCheck0"></Icon></span>
             <ul>
                 <li><h4>Experienced nannies</h4></li>
-                <li>{items?.length}</li>
+                <li>{items?.length ?? '100+'}</li>
             </ul>
             </div>
         </div>
