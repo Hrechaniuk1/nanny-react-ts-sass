@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 
 // custom imports
 import { isLoggedInSelector } from '../../redux/selector'
+import PleaseLogIn from '../PleaseLogIn/PleaseLogIn'
 
 // types
 type PrivateRouteProps = {
@@ -17,7 +18,7 @@ const PrivateRoute: FC<PrivateRouteProps> = ({Component}) => {
     const isLoggedIn = useSelector(isLoggedInSelector)
 
     return(
-        <>{isLoggedIn ? <Component></Component> : <div><p>Please, log in</p></div>}</>
+        <>{isLoggedIn ? <Component></Component> : <PleaseLogIn></PleaseLogIn>}</>
     )
 
 }
