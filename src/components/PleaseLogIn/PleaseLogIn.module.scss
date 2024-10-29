@@ -1,0 +1,10 @@
+@use '../../styles/forvardForModules' as s;
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: s.$font-size-h1;
+    font-weight: s.$font-weight-bold;
+    color: s.$stroke-color-black;
+}
