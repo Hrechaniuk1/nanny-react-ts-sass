@@ -1,6 +1,6 @@
 // geneRAL imports
 import { FC, useState } from "react";
-import { useSelector, UseSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 // custom imports
 import { NannyResponse } from "../../redux/operatioms";
@@ -8,6 +8,8 @@ import Icon from "../Icon/Icon";
 import { addFavs, delFavs } from "../../redux/slise";
 import { useAppDispatch } from "../../genTypes/types";
 import { favsSelector } from "../../redux/selector";
+import Modal from "../Modal/Modal";
+import Appointment from "../Appointment/Appointment";
 
 // styles
 import css from './NannieCard.module.scss'
@@ -26,6 +28,7 @@ const NannieCard: FC<NannieCardProps> = ({data}) => {
     const isFav = favs.includes(data.id)
 
     const [readMore, setReadMore] = useState('readMoreHidden')
+    const [appIsOpen, setAppIsOpen] = useState(false)
 
     // const today = Date.now()
 
@@ -45,6 +48,11 @@ const NannieCard: FC<NannieCardProps> = ({data}) => {
         } else {
             dispatch(addFavs(data.id))
         }
+    }
+
+    // open appointment form 
+    function appointmentHandler() {
+        setAppIsOpen(true)
     }
 
     return (
@@ -79,7 +87,7 @@ const NannieCard: FC<NannieCardProps> = ({data}) => {
                         <p>{item.comment}</p>
                     </li>)}
                 </ul>
-                <button className={css.appointmentBtn}>Make an appointment</button>
+                <button className={css.appointmentBtn} onClick={appointmentHandler}>Make an appointment</button>
                 </div>
             </div>
             <ul className={css.infoBoard}>
@@ -88,6 +96,9 @@ const NannieCard: FC<NannieCardProps> = ({data}) => {
                 <li>Price / 1 hour: {data.price_per_hour}</li>
                 <li><button className={css.favBtn} onClick={favHandler}><Icon className={!isFav ? css.iconHeart : css.iconHeartChosen} iconName="heart"></Icon></button></li>
             </ul>
+            <Modal isOpen={appIsOpen}>
+                <Appointment name={data.name} img={data.avatar_url} isOpen={setAppIsOpen} ></Appointment>
+            </Modal>
         </div>
     )
 

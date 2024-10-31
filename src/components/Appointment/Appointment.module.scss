@@ -1,1 +1,91 @@
 @use '../../styles/forvardForModules' as s;
+
+.formBox {
+    position: relative;
+    width: 566px;
+    padding: 64px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    background: rgb(251, 251, 251);
+}
+
+.title {
+    font-size: s.$font-size-h2;
+    font-weight: s.$font-weight-bold;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: s.$font-size-16;
+    font-weight: s.$font-weight-reg;
+    color: s.$font-gray;
+    margin-bottom: 40px;
+}
+
+.iconClose {
+    width: 30px;
+    height: 30px;
+    stroke: black;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: s.$cursor
+}
+
+.nannyBox {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.nameList li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.nameList li:last-child p {
+    font-size: 24px;
+    color: s.$stroke-color-black;
+}
+
+.imgBox {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+}
+
+.imgBox img {
+    object-fit: cover;
+    border: 1px solid s.$color-gray;
+    border-radius: s.$border-radius-btn;
+    padding: 12px;
+}
+
+.form {
+    width: 100%;
+}
+
+.formGrid {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+
+.gridItem1, .gridItem2, .gridItem3, .gridItem4 {
+    @include s.input();
+    grid-column: span 1;
+}
+
+.gridItem5, .gridItem6, .gridItem7 {
+    @include s.input();
+    grid-column: span 2;
+}
+
+.gridItem7 {
+    resize: none;
+}
