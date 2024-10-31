@@ -64,7 +64,8 @@ const NannieCard: FC<NannieCardProps> = ({data}) => {
                 </ul>
                 <p className={css.about}>{data.about}</p>
                 <button className={css.more} onClick={readMoreHandler}>Read more...</button>
-                <ul className={`${css.revList} ${css[readMore]}`}>
+                <div className={ css[readMore]}>
+                <ul className={css.revList}>
                     {data.reviews.map(item => <li key={item.reviewer + 2} >
                         <ul className={css.reviewList}>
                             <li><span className={css.revImg}>{item.reviewer.split('')[0]}</span></li>
@@ -78,6 +79,8 @@ const NannieCard: FC<NannieCardProps> = ({data}) => {
                         <p>{item.comment}</p>
                     </li>)}
                 </ul>
+                <button className={css.appointmentBtn}>Make an appointment</button>
+                </div>
             </div>
             <ul className={css.infoBoard}>
                 <li><Icon className={css.iconLocation} iconName="map-pin"></Icon> {data.location}</li>

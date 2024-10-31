@@ -159,3 +159,19 @@ max-height: 500px;
 transition: s.$transition;
 
 }
+
+.appointmentBtn {
+    @include s.bnt-feature(28px, 14px);
+    margin-right: auto;
+    margin-top: 20px;
+    border-radius: s.$border-radius-btn;
+    background-color: s.$primary-color;
+    color: s.$color-white;
+    transition: s.$transition;
+    cursor: s.$cursor;
+}
+
+.appointmentBtn:hover {
+    color: s.$color-gray;
+    background-color: s.$hover-color;
+}
