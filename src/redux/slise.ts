@@ -1,11 +1,17 @@
 import { createSlice, PayloadAction} from "@reduxjs/toolkit";
+import { toast } from 'react-toastify'  
+
 
 import {registerUserOperation, loginUserOperation, logoutOperation, getDataFromCollectionOperation} from './operatioms'
 import { NannyResponse } from "./operatioms";
 
 
 function errorHandler(state: any, action: PayloadAction<any>) {
-
+    toast.error('Something went wrong', {
+        position: "top-right", 
+        autoClose: 5000,  
+        hideProgressBar: true,  
+      });
     
 }
 
