@@ -70,6 +70,7 @@
     width: 100%;
 }
 
+
 .formGrid {
     display: grid;
     gap: 10px;
@@ -89,4 +90,17 @@
 
 .gridItem7 {
     resize: none;
+}
+
+.sendBtn {
+    @include s.bnt-feature(20px, 10px);
+    background: s.$primary-color;
+    color: s.$color-white;
+    margin-top: 15px;
+    border-radius: s.$border-radius-btn;
+    transition: s.$transition;
+}
+
+.sendBtn:hover {
+    background-color: s.$hover-color;
 }

@@ -13,7 +13,8 @@ import css from './Appointment.module.scss'
 type AppointmentProps = {
     name: string;
     img: string;
-    isOpen: Dispatch<React.SetStateAction<boolean>>
+    isOpen: Dispatch<React.SetStateAction<boolean>>;
+    showToast: () => void
 }
 
 type InnitialType = {
@@ -29,7 +30,7 @@ type InnitialType = {
 
 // component
 
-const Appointment: FC<AppointmentProps> = ({name, img, isOpen}) => {
+const Appointment: FC<AppointmentProps> = ({name, img, isOpen, showToast}) => {
 
     const innitial: InnitialType = {
         address: '',
@@ -52,8 +53,7 @@ const Appointment: FC<AppointmentProps> = ({name, img, isOpen}) => {
       
         age: Yup.number()
           .typeError('Age must be a number')
-          .min(18, 'Minimum age is 18')
-          .max(100, 'Maximum age is 100')
+          .max(100, 'Maximum age is 15')
           .required('Age is required'),
       
         time: Yup.string()
@@ -70,21 +70,22 @@ const Appointment: FC<AppointmentProps> = ({name, img, isOpen}) => {
       
         comment: Yup.string()
           .max(500, 'Comment can be up to 500 characters')
-          .optional(), 
       });
 
     function submitHandler(values:InnitialType) {
         console.log(values)
         isOpen(false)
+        showToast()
     }
 
     function closeModal() {
         isOpen(false)
     }
 
+
     return (
         <div className={css.formBox}>
-            <button className={css.closeBtn} onClick={closeModal}><Icon className={css.iconClose} iconName="x"></Icon></button>
+                      <button className={css.closeBtn} onClick={closeModal}><Icon className={css.iconClose} iconName="x"></Icon></button>
             <h5 className={css.title}>Make an appointment with a babysitter</h5>
             <p className={css.description}>Arranging a meeting with a caregiver for your child is the first step to creating a safe and comfortable environment. Fill out the form below so we can match you with the perfect care partner.</p>
             <div className={css.nannyBox}>
@@ -97,26 +98,27 @@ const Appointment: FC<AppointmentProps> = ({name, img, isOpen}) => {
             <Formik
                 initialValues={innitial}
                 onSubmit={submitHandler}
+                validateOnChange={false}
                 validationSchema={validationSchema}
             >
                 <Form className={css.form}>
                     <div className={css.formGrid}>
                     <Field className={css.gridItem1} type='text' name='address' placeholder='Address' required></Field>
-                    <ErrorMessage name='address' component='span'></ErrorMessage>
+                    <ErrorMessage className={css.errM} name='address' component='span'></ErrorMessage>
                     <Field className={css.gridItem2}  type='phone' name='phone' placeholder='+380...' required></Field>
-                    <ErrorMessage name='phone' component='span'></ErrorMessage>
+                    <ErrorMessage className={css.errM} name='phone' component='span'></ErrorMessage>
                     <Field className={css.gridItem3}  type='text' name='age' placeholder="Child's age" required></Field>
-                    <ErrorMessage name='age' component='span'></ErrorMessage>
+                    <ErrorMessage className={css.errM} name='age' component='span'></ErrorMessage>
                     <Field className={css.gridItem4}  type='text' name='time' placeholder='Time' required></Field>
-                    <ErrorMessage name='time' component='span'></ErrorMessage>
+                    <ErrorMessage className={css.errM} name='time' component='span'></ErrorMessage>
                     <Field className={css.gridItem5}  type='email' name='email' placeholder='Email' required></Field>
-                    <ErrorMessage name='email' component='span'></ErrorMessage>
+                    <ErrorMessage className={css.errM} name='email' component='span'></ErrorMessage>
                     <Field className={css.gridItem6}  type='text' name='name' placeholder='Father or mother name' required></Field>
-                    <ErrorMessage name='name' component='span'></ErrorMessage>
+                    <ErrorMessage className={css.errM} name='name' component='span'></ErrorMessage>
                     <Field className={css.gridItem7}  type='text' as="textarea" name='comment' placeholder='Comment' required></Field>
-                    <ErrorMessage name='comment' component='span'></ErrorMessage>
+                    <ErrorMessage className={css.errM} name='comment' component='span'></ErrorMessage>
                     </div>
-                    <button type='submit' >Send</button>
+                    <button className={css.sendBtn} type='submit' >Send</button>
                 </Form>
             </Formik>
         </div>

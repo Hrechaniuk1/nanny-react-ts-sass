@@ -1,6 +1,8 @@
 // geneRAL imports
 import { FC, useState } from "react";
 import { useSelector } from "react-redux";
+import { toast } from 'react-toastify'  
+
 
 // custom imports
 import { NannyResponse } from "../../redux/operatioms";
@@ -55,6 +57,15 @@ const NannieCard: FC<NannieCardProps> = ({data}) => {
         setAppIsOpen(true)
     }
 
+    // toast
+    function showToast() {
+        toast.success('Will contact you soon', {
+            position: "top-right", 
+            autoClose: 5000,  
+            hideProgressBar: true,  
+          });
+    }
+
     return (
         <div className={css.cardContainer}>
             <div className={css.imgBox}>
@@ -97,7 +108,7 @@ const NannieCard: FC<NannieCardProps> = ({data}) => {
                 <li><button className={css.favBtn} onClick={favHandler}><Icon className={!isFav ? css.iconHeart : css.iconHeartChosen} iconName="heart"></Icon></button></li>
             </ul>
             <Modal isOpen={appIsOpen}>
-                <Appointment name={data.name} img={data.avatar_url} isOpen={setAppIsOpen} ></Appointment>
+                <Appointment name={data.name} img={data.avatar_url} isOpen={setAppIsOpen} showToast={showToast} ></Appointment>
             </Modal>
         </div>
     )
