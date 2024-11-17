@@ -1,5 +1,5 @@
 // general import
-import { FC, ReactNode } from "react"
+import { FC, ReactNode, useEffect } from "react"
 import ReactDOM from 'react-dom';
 
 // styles
@@ -14,6 +14,19 @@ interface ModalProps {
 //   component 
 
 const Modal: FC<ModalProps> = ({ isOpen, children }) => {
+
+  useEffect(() => {
+    if (isOpen) {
+        document.body.classList.add(css.bodyFixed);
+    } else {
+        document.body.classList.remove(css.bodyFixed);
+    }
+
+    return () => {
+        document.body.classList.remove(css.bodyFixed);
+    };
+}, [isOpen]);
+
     if (!isOpen) return null;
   
     const portalRoot = document.getElementById('portal-root');
