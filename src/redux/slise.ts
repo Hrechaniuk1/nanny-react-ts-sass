@@ -84,7 +84,7 @@ const mainSlice = createSlice({
             .addCase(getDataFromCollectionOperation.pending, loadingHandler)
             .addCase(getDataFromCollectionOperation.fulfilled, (state, action) => {
                 state.items = action.payload
-                // state.isLoading = false
+                state.isLoading = false
             })
             .addCase(getDataFromCollectionOperation.rejected, errorHandler)
             .addCase(registerUserOperation.pending, loadingHandler)
