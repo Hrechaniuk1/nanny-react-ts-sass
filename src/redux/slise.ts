@@ -33,7 +33,7 @@ function loadingHandler(state: initialType) {
 }
 
 function showToast(message: string) {
-    toast.error(message, {
+    toast.info(message, {
         position: "top-right", 
         autoClose: 5000,  
         hideProgressBar: true,  

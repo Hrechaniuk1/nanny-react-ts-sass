@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // components import
 import Header from "./components/Hedaer/Hedaer";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import Loading from "./components/Loading/Loading";
 
 // lazy
 const MainPage = lazy(() => import('./pages/mainPage/MainPage'))
@@ -21,7 +22,7 @@ const App: FC = () => {
     <>
     <ToastContainer />
     <Header></Header>
-    <Suspense>
+    <Suspense fallback={<Loading></Loading>}>
     <Routes>
       <Route path="/" element={<MainPage></MainPage>} ></Route>
       <Route path="/nannies" element={<PrivateRoute Component={NanniesPage}></PrivateRoute>} ></Route>
