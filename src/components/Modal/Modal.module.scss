@@ -1,7 +1,7 @@
 @use '../../styles/forvardForModules' as s;
 
 .modal {
-    padding-top: 30%;
+    padding-top: 10%;
     padding-bottom: 5%;
     overflow: auto;
     z-index: s.$z-modal; 

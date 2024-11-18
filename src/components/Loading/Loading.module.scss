@@ -1,11 +1,25 @@
+@use '../../styles/forvardForModules' as s;
+
+.loadBox {
+  background-color: s.$nannies-page-bg-color;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .loader {
-    width: 48px;
-    height: 48px;
+    width: 192px;
+    height: 192px;
     border-radius: 50%;
     display: inline-block;
-    position: relative;
-    border: 3px solid;
-    border-color: #6ebeff #6ebeff transparent transparent;
+    border: 12px solid; 
+    border-color: s.$primary-color s.$primary-color transparent transparent;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
   }
@@ -20,7 +34,7 @@
     bottom: 0;
     margin: auto;
     border: 3px solid;
-    border-color: transparent transparent #337AB7 #337AB7;
+    border-color: transparent transparent s.$hover-color s.$hover-color;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -31,7 +45,7 @@
   .loader::before {
     width: 32px;
     height: 32px;
-    border-color: #6ebeff #6ebeff transparent transparent;
+    border-color: s.$hover-color s.$hover-color transparent transparent;
     animation: rotation 1.5s linear infinite;
   }
       

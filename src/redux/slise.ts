@@ -17,14 +17,6 @@ export type initialType = {
     favourite: ItemArray
 }
 
-const initialState: initialType = {
-    isLoading: false,
-    isLoggedIn: false,
-    isRegister: false,
-    items: undefined,
-    favourite: []
-}
-
 // helpers
 function errorHandler(state: initialType) {
     state.isLoading = false
@@ -50,6 +42,15 @@ function showToast(message: string) {
 
 
 // slice
+
+const initialState: initialType = {
+    isLoading: false,
+    isLoggedIn: false,
+    isRegister: false,
+    items: undefined,
+    favourite: []
+}
+
 const mainSlice = createSlice({
     name: 'nannys',
     initialState: initialState,
@@ -83,7 +84,7 @@ const mainSlice = createSlice({
             .addCase(getDataFromCollectionOperation.pending, loadingHandler)
             .addCase(getDataFromCollectionOperation.fulfilled, (state, action) => {
                 state.items = action.payload
-                state.isLoading = false
+                // state.isLoading = false
             })
             .addCase(getDataFromCollectionOperation.rejected, errorHandler)
             .addCase(registerUserOperation.pending, loadingHandler)

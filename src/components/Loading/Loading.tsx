@@ -10,7 +10,9 @@ const Loading: FC = () => {
 
 
     return (
-        <span className={css.loader}></span>
+        <div className={css.loadBox}>
+            <span className={css.loader}></span>
+        </div>
     )
 }
 
