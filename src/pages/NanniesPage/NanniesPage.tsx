@@ -20,7 +20,7 @@ import css from './NanniesPage.module.scss'
 const NanniesPage: FC = () => {
 
     const dispatch = useAppDispatch()
-    const [sortBy, setSortBy] = useState('name')
+    const [sortBy, setSortBy] = useState<'rating' | 'price_per_hour' | 'name'>('name');
 
     useEffect(() => {
 
