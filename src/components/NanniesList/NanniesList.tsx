@@ -12,7 +12,7 @@ import css from './NanniesList.module.scss';
 type NanniesListProps = {
     data?: NannyResponse[] | undefined;
     idList?: string[];
-    sotrBy?: keyof NannyResponse;
+    sotrBy?: 'rating' | 'price_per_hour' | 'name'
 };
 
 const NanniesList: FC<NanniesListProps> = ({ data, idList, sotrBy }) => {

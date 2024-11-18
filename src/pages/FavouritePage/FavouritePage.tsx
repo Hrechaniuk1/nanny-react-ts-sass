@@ -13,12 +13,12 @@ import css from './FavouritePage.module.scss'
 // component 
 const FavouritePage: FC = () => {
 
-    const [sortBy, setSortBy] = useState('name')
+    const [sortBy, setSortBy] = useState<'rating' | 'price_per_hour' | 'name'>('name');
     const items = useSelector(itemsSelector)
     const favs = useSelector(favsSelector)
 
     
-    
+     
     return (
         <div className={css.page}>
             <FilterSelect setSort={setSortBy}></FilterSelect>

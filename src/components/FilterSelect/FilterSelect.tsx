@@ -1,18 +1,23 @@
 // gen imports 
-import Select, { StylesConfig,  SingleValue, MultiValue, ActionMeta } from 'react-select'
+import Select, { StylesConfig,  SingleValue, MultiValue } from 'react-select'
 import React, {FC} from 'react' 
 
 // styles
 import css from './FilterSelect.module.scss'
 
 // types
+// type OptionType = {
+//     value: string;
+//     label: string;
+// }
+
 type OptionType = {
-    value: string;
-    label: string;
+  value: 'rating' | 'price_per_hour' | 'name';
+  label: string;
 }
 
 type FilterSelectProps = {
-  setSort: React.Dispatch<React.SetStateAction<string>>
+  setSort: React.Dispatch<React.SetStateAction<'rating' | 'price_per_hour' | 'name'>>
 }
 
 // component
@@ -62,7 +67,7 @@ const FilterSelect: FC<FilterSelectProps> = ({setSort}) => {
 
     function changeHandler (
       newValue: SingleValue<OptionType> | MultiValue<OptionType>, 
-      actionMeta: ActionMeta<OptionType>
+      // actionMeta: ActionMeta<OptionType>
   ) {
     if (newValue) {
       if(isSingleValue(newValue)) {
